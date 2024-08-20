@@ -1,12 +1,12 @@
 // script.js
 
-// Example: Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+// Adding a blinking cursor effect
+document.addEventListener('DOMContentLoaded', function () {
+    const cursor = document.createElement('span');
+    cursor.classList.add('blink');
+    cursor.textContent = '_';
+    document.body.appendChild(cursor);
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+    const footer = document.querySelector('footer');
+    footer.insertBefore(cursor, footer.firstChild);
 });
