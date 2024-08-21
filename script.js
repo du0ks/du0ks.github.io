@@ -1,7 +1,5 @@
-// script.js
-
-// Adding a blinking cursor effect
 document.addEventListener('DOMContentLoaded', function () {
+    // Adding a blinking cursor effect
     const cursor = document.createElement('span');
     cursor.classList.add('blink');
     cursor.textContent = '_';
