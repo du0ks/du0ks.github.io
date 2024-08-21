@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Adding a blinking cursor effect
+    // Adding a blinking cursor effect at the footer
     const cursor = document.createElement('span');
     cursor.classList.add('blink');
     cursor.textContent = '_';
-    document.body.appendChild(cursor);
-
     const footer = document.querySelector('footer');
-    footer.insertBefore(cursor, footer.firstChild);
+    footer.appendChild(cursor);
 });
