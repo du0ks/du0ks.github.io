@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Wine Quality</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Analysis of the Relationship Between Chemical Parameters and Wine Quality</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../pages/about.html"><i class="fas fa-user"></i> Who Am I?</a></li>
+                    <li><a href="../pages/projects.html"><i class="fas fa-briefcase"></i> Projects</a></li>
+                    <li><a href="../pages/skills.html"><i class="fas fa-cogs"></i> Skills</a></li>
+                    <li><a href="../pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section>
+            <p> We analyzed a dataset involving twelve physicochemical properties of wine 
+                from the UCI Machine Learning Repository, with the aim of understanding the relationships 
+                between these properties and their collective influence on the quality of wine. We derived 
+                valuable insights using statistical methods such as the Mann-Whitney U Test, the Wilcoxon 
+                Rank-Sum Test, linear regression models, and the Kruskal-Wallis Test. We found that the 
+                average of chloride differs significantly from zero, and there exists a difference between 
+                the mean values of volatile acidity and citric acid. It was observed that citric acid levels 
+                significantly affect the pH of the wine. Multiple linear regression revealed that all variables 
+                except some quality values significantly affect the pH. Moreover, the Kruskal-Wallis Test 
+                demonstrated a significant difference in wine density across different quality levels. This 
+                study provides a comprehensive understanding of the physicochemical properties that influence 
+                wine quality, which could guide winemakers in their production process and deepen the knowledge 
+                of wine enthusiasts.</p> 
+            <br>
+            <p>Below, some graphs about the analysis has shown.</p>
+            <br>
+            <br>
+            <div style="text-align: center;">
+                <img src="../projects/normality.png" style="width:800px; height:auto;"/>
+            </div>
+            <p>Figure 1: Normality assumption check for quality and density.</p>
+            <br>
+            <br>
+            <div style="text-align: center;">
+                <img src="../projects/wilcoxon.png" style="width:800px; height:auto;"/>
+            </div>
+            <p>Figure 2: Wilcoxon Rank Sum Test for Citric Acid and Volatile Acidity.</p>
+
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Duhan Onat Karadayı. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>
