@@ -122,6 +122,13 @@ footer {
 .blink {
     animation: blink 1s step-start infinite;
 }
+<<<<<<< HEAD
+
+/* Monospace font for header */
+.monospace-header {
+    font-family: 'Courier New', Courier, monospace;
+}
+=======
 /* Ensure images are responsive */
 img {
     max-width: 100%;
@@ -131,3 +138,4 @@ img {
     margin-right: auto;
 }
 
+>>>>>>> 50e07ea6c92928e5e55d1e5c410128c19b2ae001
