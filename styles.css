@@ -7,22 +7,20 @@
 
 /* Basic styles for the hacker-theme */
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace; /* Use monospace for hacker theme */
     background-color: #000;
     color: #00ff00;
-    margin: 0;
-    padding: 0;
     line-height: 1.5;
     overflow-x: hidden;
 }
 
 .container {
-    max-width: 90%;
-    margin: auto;
+    max-width: 1200px; /* Adjusted for general layout */
+    margin: 0 auto;
     padding: 20px;
-    position: relative;
 }
 
+/* Header styles */
 header {
     text-align: center;
     margin-bottom: 20px;
@@ -33,6 +31,7 @@ header h1 {
     font-size: 2rem;
 }
 
+/* Navigation styles */
 nav ul {
     list-style: none;
     padding: 0;
@@ -46,31 +45,47 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #00ff00;
+    color: #00ff00; /* Menu item color */
     text-decoration: none;
+    font-size: 16px; /* Adjust font size as needed */
 }
 
-section {
-    margin-bottom: 30px;
+nav ul li a:hover {
+    color: #fff; /* Menu item color on hover */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+/* Flexbox layout for the about section */
+section#about {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    gap: 20px; /* Space between image and text */
 }
 
-a {
-    color: #00ff00;
-    text-decoration: underline;
+.left {
+    flex: 1;
+    text-align: center;
 }
 
-a:hover {
-    color: #fff;
+.right {
+    flex: 2;
 }
 
+/* General image styling */
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box; /* Ensures padding and borders are included in the width */
+}
+
+/* Footer styles */
 footer {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
     padding-top: 10px;
     border-top: 1px solid #00ff00;
     font-size: 0.9rem;
@@ -81,18 +96,20 @@ footer {
     nav ul {
         display: flex;
         flex-direction: column;
+        margin: 0; /* Remove margin for vertical menu */
     }
     nav ul li {
-        margin: 5px 0;
+        margin: 5px 0; /* Adjust spacing for mobile */
     }
     .container {
         padding: 10px;
     }
 }
-    
-/* Monospace font for header */
-.monospace-header {
-    font-family: 'Courier New', Courier, monospace;
+
+@media (max-width: 600px) {
+    img {
+        max-width: 100%;
+    }
 }
 
 /* Keyframe animation for the terminal effect */
@@ -104,4 +121,9 @@ footer {
 
 .blink {
     animation: blink 1s step-start infinite;
+}
+
+/* Monospace font for header */
+.monospace-header {
+    font-family: 'Courier New', Courier, monospace;
 }
