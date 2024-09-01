@@ -7,7 +7,7 @@
 
 /* Basic styles for the hacker-theme */
 body {
-    font-family: 'Courier New', Courier, monospace; /* Use monospace for hacker theme */
+    font-family: 'Courier New', Courier, monospace;
     background-color: #000;
     color: #00ff00;
     line-height: 1.5;
@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-    max-width: 1200px; /* Adjusted for general layout */
+    max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -45,21 +45,22 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #00ff00; /* Menu item color */
+    color: #00ff00;
     text-decoration: none;
-    font-size: 16px; /* Adjust font size as needed */
+    font-size: 16px;
 }
 
 nav ul li a:hover {
-    color: #fff; /* Menu item color on hover */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    color: #fff;
+    transition: color 0.3s ease;
 }
 
-/* Flexbox layout for the about section */
-section#about {
+/* Flexbox layout for the home section */
+section#home {
     display: flex;
-    align-items: center; /* Center items vertically */
-    gap: 20px; /* Space between image and text */
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .left {
@@ -69,6 +70,68 @@ section#about {
 
 .right {
     flex: 2;
+    max-width: 100%;
+}
+
+.left img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Flexbox layout for the about section */
+section#about {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+section#about .flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+section#about .flex-container img {
+    flex: 1;
+    max-width: 48%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Flexbox layout for the estate section */
+section#estate {
+    margin: 20px 0;
+}
+
+section#estate .flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+section#estate .flex-container > div {
+    flex: 1;
+    max-width: 48%;
+    margin-bottom: 20px;
+}
+
+section#estate .flex-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+/* Centering single images and captions */
+section#estate .centered-image {
+    text-align: center;
+    margin: 20px 0; /* Adjust margin as needed */
+}
+
+section#estate .centered-image img {
+    max-width: 50%;
+    height: auto;
+    display: inline-block;
 }
 
 /* General image styling */
@@ -77,9 +140,7 @@ img {
     height: auto;
     display: block;
     max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box; /* Ensures padding and borders are included in the width */
+    box-sizing: border-box;
 }
 
 /* Footer styles */
@@ -96,18 +157,33 @@ footer {
     nav ul {
         display: flex;
         flex-direction: column;
-        margin: 0; /* Remove margin for vertical menu */
+        margin: 0;
     }
     nav ul li {
-        margin: 5px 0; /* Adjust spacing for mobile */
+        margin: 5px 0;
     }
     .container {
         padding: 10px;
     }
+    .flex-container img {
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 600px) {
-    img {
+    section#home {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    section#about .flex-container,
+    section#estate .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    section#about .flex-container img,
+    section#estate .flex-container img {
         max-width: 100%;
     }
 }
@@ -119,23 +195,8 @@ footer {
     100% { opacity: 1; }
 }
 
+/* Style for blinking cursor */
 .blink {
     animation: blink 1s step-start infinite;
-}
-<<<<<<< HEAD
-
-/* Monospace font for header */
-.monospace-header {
     font-family: 'Courier New', Courier, monospace;
 }
-=======
-/* Ensure images are responsive */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
->>>>>>> 50e07ea6c92928e5e55d1e5c410128c19b2ae001
