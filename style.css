@@ -522,4 +522,8 @@ footer p {
   .nav-links {
     display: none;
   }
+  #hamburger-nav {
+    z-index: 1000;
+  }
+  
 }
