@@ -482,4 +482,46 @@ footer p {
   text-align: center;
 }
 
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+  /* Adjust nav links for mobile */
+  nav {
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
 
+  /* Stack the project containers vertically on mobile */
+  #projects .section-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Adjust the size of the color containers for mobile */
+  .color-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  /* Improve button size and layout for mobile */
+  .project-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Reduce margins and paddings */
+  section {
+    margin: 0 2rem;
+  }
+
+  /* Fix hamburger menu for mobile */
+  
+  
+  /* Hide desktop nav links on mobile */
+  .nav-links {
+    display: none;
+  }
+  #hamburger-nav {
+    z-index: 1000;
+  }
+  
+}
