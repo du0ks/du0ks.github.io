@@ -484,40 +484,42 @@ footer p {
 
 /* Media query for mobile devices */
 @media screen and (max-width: 768px) {
-  /* Show the hamburger menu in mobile */
+  /* Adjust nav links for mobile */
+  nav {
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  /* Stack the project containers vertically on mobile */
+  #projects .section-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Adjust the size of the color containers for mobile */
+  .color-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  /* Improve button size and layout for mobile */
+  .project-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Reduce margins and paddings */
+  section {
+    margin: 0 2rem;
+  }
+
+  /* Fix hamburger menu for mobile */
   #hamburger-nav {
     display: block;
   }
-
-  /* Hide desktop navigation links */
+  
+  /* Hide desktop nav links on mobile */
   .nav-links {
     display: none;
   }
-
-  /* Style the hamburger icon */
-  .hamburger-icon span {
-    background-color: black;
-  }
-
-  /* Ensure the hamburger menu and its contents are correctly positioned */
-  .menu-links {
-    position: absolute;
-    top: 60px; /* Adjust as needed to place it below the nav bar */
-    right: 0;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    width: 100%;
-  }
-
-  .menu-links a {
-    color: black;
-    text-align: center;
-    padding: 1rem;
-    display: block;
-  }
-
-  .menu-links.open {
-    max-height: 300px;
-  }
 }
-
