@@ -356,7 +356,7 @@ article .icon {
   cursor: default;
 }
 
-/* PROJECTS SECTION */
+//* PROJECTS SECTION */
 
 #projects {
   position: relative;
@@ -382,6 +382,7 @@ article .icon {
   color: black;
   border-color: rgb(163, 163, 163);
 }
+
 #projects .section-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -426,9 +427,44 @@ article .icon {
   cursor: pointer;
 }
 
+/* Responsive Design for Mobile */
 
+@media (max-width: 768px) {
+  #projects .section-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 
+  .project-title {
+    font-size: 1rem;
+  }
 
+  .project-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #projects .section-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .project-title {
+    font-size: 0.875rem;
+  }
+
+  .project-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}
 
 /* CONTACT */
 
