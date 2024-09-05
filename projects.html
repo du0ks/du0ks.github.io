@@ -5,31 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
 </head>
 
 <body>
     <nav>
-        <div class="logo">My Projects</div>
+        <div class="logo">Projects</div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="./index.html#experience" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <div id="hamburger-nav">
-            <div class="hamburger-menu">
-                <div class="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            <div class="menu-links">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
+        <div id="hamburger-nav" class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul class="menu-links">
+            <li><a href="./index.html">Home</a></li>
+          <li><a href="./index.html#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="./index.html#experience" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="projects.html" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="./index.html#contact" onclick="toggleMenu()">Contact</a></li>
+          </ul>
         </div>
-    </nav>
+      </nav>
+    
+      
 
     <section id="projects">
         <div class="section-container">
@@ -37,10 +42,10 @@
                 <h3 class="project-title">Airbnb Explorer</h3>
                 <p>Created a R Shiny app for tourists, employing statistical methods 
                     like multiple linear regression and logistic regression to compare 
-                    irbnb flats. Implemented interactive Leaflet map system for enhanced 
-                    user engagement. </p>
+                    Airbnb flats. Implemented interactive Leaflet map system for enhanced 
+                    user engagement.</p>
                 <br>
-                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1" >View Details</button></a>
+                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1">View Details</button></a>
             </div>
 
             <div class="color-container">
@@ -48,61 +53,45 @@
                 <p>Scraped real estate data from sahibinden.com and analyzed using multiple linear 
                     regression and logistic regression to determine how various factors like size, 
                     room count, and building age influence apartment prices.</p>
-                <br>
-                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1" >View Details</button></a>
+                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1">View Details</button></a>
             </div>
             <div class="color-container">
                 <h3 class="project-title">Analysis of the Relationship Between Chemical Parameters and Wine Quality</h3>
                 <p>Analyzed twelve physicochemical properties of wine to understand their 
                     impact on quality using various statistical tests, revealing key factors 
                     like citric acid and wine density significantly influence wine quality.</p>
-                    <br>
-                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1" >View Details</button></a>
+                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1">View Details</button></a>
             </div>
             <div class="color-container">
                 <h3 class="project-title">Android Bloatware Remover</h3>
                 <p>A program that removes all the bloatware from your Android phone.</p>
-                <br>
-                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1" >View Details</button></a>
+                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1">View Details</button></a>
             </div>
             <div class="color-container">
-                <h3 class="project-title">Fedora Minimal Installion Automation</h3>
-                <p>Fedora minimal installion automation script for advanced users.</p>
-                <br>
-                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1" >View Details</button></a>
+                <h3 class="project-title">Fedora Minimal Installation Automation</h3>
+                <p>Fedora minimal installation automation script for advanced users.</p>
+                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1">View Details</button></a>
             </div>
             <div class="color-container">
                 <h3 class="project-title">Research About Music Listening Habits</h3>
                 <p>Conducted a survey in ODTÜ streets about music listening habits.</p>
-                <br>
-                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1" >View Details</button></a>
+                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1">View Details</button></a>
             </div>
             <div class="color-container">
                 <h3 class="project-title">Touchpad Fix</h3>
                 <p>In some laptops, touchpad is randomly disabling itself when you boot the computer. 
-                    Thus, created a system service to encounter that problem. </p>
-                    <br>
-                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1" >View Details</button></a>
+                    Thus, created a system service to address that problem.</p>
+                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1">View Details</button></a>
             </div>
             <div class="color-container">
                 <h3 class="project-title">Slow Wifi Fix</h3>
-                <p>In Linux Mint, people might face with very slow wifi because of powersave modes. Script for that problem.</p>
-                <br>
-                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1" >View Details</button></a>
+                <p>In Linux Mint, people might face very slow wifi because of power-save modes. Script for that problem.</p>
+                <a href="./projects/airbnb.html"><button class="btn project-btn btn-color-1">View Details</button></a>
             </div>
         </div>
     </section>
 
+    
 
-
-    <script>
-        const hamburger = document.querySelector('.hamburger-menu');
-        const menuLinks = document.querySelector('.menu-links');
-        hamburger.addEventListener('click', () => {
-            menuLinks.classList.toggle('open');
-            hamburger.querySelector('.hamburger-icon').classList.toggle('open');
-        });
-    </script>
 </body>
-
 </html>
