@@ -397,8 +397,10 @@ article .icon {
 #projects .section-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
   gap: 2rem;
+  
+  justify-content: center; /* Center horizontally */
+  
 }
 
 
@@ -435,9 +437,11 @@ article .icon {
 @media (max-width: 768px) {
   #projects .section-container {
     
-    align-items: stretch; /* Ensure items stretch to fill the container */
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+  .color-container {
+    min-width: 350px; /* Reduce the size for smaller screens */
   }
 
   .project-title {
