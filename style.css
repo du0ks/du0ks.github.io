@@ -356,7 +356,7 @@ article .icon {
   cursor: default;
 }
 
-//* PROJECTS SECTION */
+/* PROJECTS SECTION */
 
 #projects {
   position: relative;
@@ -457,7 +457,7 @@ article .icon {
   }
 
   .project-title {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   .project-btn {
