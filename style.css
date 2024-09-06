@@ -218,6 +218,11 @@ section {
   height: 2rem;
 }
 
+.project-icon {
+  cursor: pointer;
+  height: 4rem;
+}
+
 /* BUTTONS */
 
 .btn-container {
