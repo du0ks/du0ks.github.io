@@ -284,8 +284,8 @@ footer {
     }
 
     .profile-pic {
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
     }
 
     .projects-grid {
@@ -313,8 +313,8 @@ footer {
     }
 
     .header-pic {
-        width: 200px; /* Adjusted size for smaller screens */
-        height: 200px; /* Adjusted size for smaller screens */
+        width: 200px !important; 
+        height: 200px !important; 
     }
 }
 
