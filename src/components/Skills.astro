@@ -1,0 +1,33 @@
+---
+// Skills component
+const skills = [
+  { name: 'R', level: 'Experienced', icon: '/assets/letter-r.png' },
+  { name: 'R Shiny', level: 'Intermediate', icon: '/assets/shiny.png' },
+  { name: 'Python', level: 'Experienced', icon: '/assets/python.png' },
+  { name: 'Statistical Analysis', level: 'Experienced', icon: '/assets/statistics.png' },
+  { name: 'GNU/Linux', level: 'Experienced', icon: '/assets/linux.png' },
+  { name: 'Bash', level: 'Experienced', icon: '/assets/bash.png' },
+  { name: 'Git', level: 'Intermediate', icon: '/assets/git.png' },
+  { name: 'Markup Languages', level: 'Experienced', icon: '/assets/markup.png' },
+  { name: 'Java', level: 'Experienced', icon: '/assets/java.png' },
+  { name: 'JavaScript', level: 'Beginner', icon: '/assets/coding.png' },
+];
+---
+
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-subtitle">My</p>
+      <h2 class="gradient-text">Skills</h2>
+    </div>
+    <div class="skills-grid stagger">
+      {skills.map((skill) => (
+        <div class="skill-card glass-card">
+          <img src={skill.icon} alt={skill.name}>
+          <h3>{skill.name}</h3>
+          <span>{skill.level}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
