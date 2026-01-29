@@ -94,7 +94,7 @@ const projects = [
             <p>{project.description}</p>
             {project.link && (
               <a href={project.link} class="button button-small">
-                {project.inProgress ? 'In Progress!' : 'View Details'}
+                <span>{project.inProgress ? 'In Progress!' : 'View Details'}</span>
               </a>
             )}
           </div>

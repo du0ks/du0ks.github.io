@@ -308,6 +308,7 @@ a {
 }
 
 .nav-links a {
+    display: inline-block;
     font-weight: 600;
     font-size: 0.9rem;
     color: var(--color-text-muted);
@@ -341,6 +342,12 @@ a {
     position: relative;
     overflow: hidden;
     transition: all var(--transition-normal);
+    z-index: 1;
+}
+
+.button span {
+    position: relative;
+    z-index: 2;
 }
 
 .button::before {
@@ -358,6 +365,7 @@ a {
     mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
+    z-index: -1;
 }
 
 .button:hover {
@@ -680,7 +688,8 @@ footer {
 
     .nav-links {
         flex-direction: column;
-        gap: var(--space-sm);
+        align-items: center;
+        gap: var(--space-md);
     }
 
     .skills-grid {
