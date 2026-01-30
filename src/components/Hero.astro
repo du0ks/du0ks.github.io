@@ -1,12 +1,22 @@
 ---
 // Hero component
+import { Image } from 'astro:assets';
+import profilePic from '../assets/profile-pic.png';
 ---
 
 <section class="hero">
   <div class="container">
     <div class="hero-content fade-in">
       <div class="hero-image">
-        <img src="/assets/profile-pic.png" alt="Duhan Onat Karadayı">
+        <Image 
+          src={profilePic} 
+          alt="Duhan Onat Karadayı" 
+          width={320} 
+          height={320} 
+          format="webp"
+          quality="high"
+          loading="eager"
+        />
       </div>
       <div class="hero-text">
         <p class="hero-subtitle">Hello 👋🏻 I'm</p>
