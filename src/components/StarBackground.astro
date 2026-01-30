@@ -1,0 +1,96 @@
+---
+---
+<div class="stars-outer" aria-hidden="true">
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+</div>
+
+<style>
+  .stars-outer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  #stars, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    will-change: opacity;
+  }
+
+  #stars {
+    width: 1px;
+    height: 1px;
+    animation: twinkle 5s ease-in-out infinite;
+  }
+
+  #stars2 {
+    width: 1.5px;
+    height: 1.5px;
+    animation: twinkle 8s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  #stars3 {
+    width: 2px;
+    height: 2px;
+    animation: twinkle 12s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  /* Faster animations for those who don't mind */
+  @media (prefers-reduced-motion: reduce) {
+    #stars, #stars2, #stars3 {
+      animation: none;
+      opacity: 0.4;
+    }
+  }
+</style>
+
+<script>
+  function setupStars() {
+    const generateStars = (count) => {
+      const stars = [];
+      for (let i = 0; i < count; i++) {
+        const x = (Math.random() * 100).toFixed(2);
+        const y = (Math.random() * 100).toFixed(2);
+        // Use a slight variation in star color for a more natural look
+        const opacity = (Math.random() * 0.5 + 0.3).toFixed(2);
+        stars.push(`${x}vw ${y}vh rgba(255, 255, 255, ${opacity})`);
+      }
+      return stars.join(', ');
+    };
+
+    const s1 = document.getElementById('stars');
+    const s2 = document.getElementById('stars2');
+    const s3 = document.getElementById('stars3');
+
+    if (s1) s1.style.boxShadow = generateStars(150);
+    if (s2) s2.style.boxShadow = generateStars(70);
+    if (s3) s3.style.boxShadow = generateStars(30);
+  }
+
+  // Run on initial load
+  setupStars();
+
+  // Re-run on view transitions if enabled
+  document.addEventListener('astro:after-swap', setupStars);
+</script>

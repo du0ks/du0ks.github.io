@@ -1,4 +1,6 @@
 ---
+import StarBackground from '../components/StarBackground.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -17,6 +19,7 @@ const { title, description = "Duhan Onat Karadayı - Data Scientist and Develope
   <title>{title}</title>
 </head>
 <body>
+  <StarBackground />
   <slot />
 </body>
 </html>
