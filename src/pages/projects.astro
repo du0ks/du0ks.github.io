@@ -7,62 +7,72 @@ const projects = [
     title: 'Airbnb Explorer',
     description: 'Created a R Shiny app for tourists, employing statistical methods like multiple linear regression and logistic regression to compare Airbnb flats. Implemented interactive Leaflet map system for enhanced user engagement.',
     icon: '/assets/airbnb.png',
-    link: 'https://github.com/du0ks/airbnb'
+    link: 'https://github.com/du0ks/airbnb',
+    category: 'data-science'
   },
   {
     title: 'Analysis of Real Estate in Mecidiyeköy, Istanbul',
     description: 'Scraped real estate data from sahibinden.com and analyzed using multiple linear regression and logistic regression to determine how various factors like size, room count, and building age influence apartment prices.',
     icon: '/assets/estate.png',
-    link: 'https://github.com/du0ks/real-estate'
+    link: 'https://github.com/du0ks/real-estate',
+    category: 'data-science'
   },
   {
     title: 'Telco Customer Churn Analysis',
     description: 'Analyzes customer churn behavior using PCA, MANOVA, logistic regression, clustering, and canonical correlation analysis to uncover patterns and build predictive models.',
     icon: '/assets/churn.png',
-    link: 'https://github.com/du0ks/customer-churn-analysis'
+    link: 'https://github.com/du0ks/customer-churn-analysis',
+    category: 'data-science'
   },
   {
     title: 'Android Bloatware Remover',
     description: 'A program that removes all the bloatware from your Android phone.',
     icon: '/assets/android.png',
-    link: 'https://github.com/du0ks/android-bloatware-remover'
+    link: 'https://github.com/du0ks/android-bloatware-remover',
+    category: 'software-dev'
   },
   {
     title: 'Billionaire Insights',
     description: 'Analyzes factors influencing billionaire wealth using demographic, economic, and industry data with statistical methods and machine learning algorithms.',
     icon: '/assets/elon.png',
     link: 'https://github.com/du0ks/billionaire',
-    inProgress: true
+    inProgress: true,
+    category: 'data-science'
   },
   {
     title: 'Fedora Minimal Installation Automation',
     description: 'Fedora minimal installation automation script for advanced users.',
     icon: '/assets/fedora.png',
-    link: 'https://github.com/du0ks/fedora-minimal-installion'
+    link: 'https://github.com/du0ks/fedora-minimal-installion',
+    category: 'software-dev'
   },
   {
     title: 'Research About Music Listening Habits',
     description: 'Conducted a survey in ODTÜ streets about music listening habits. Used various statistical and visualization techniques to analyze the data.',
     icon: '/assets/music.png',
-    link: null
+    link: null,
+    category: 'data-science'
   },
   {
     title: 'Touchpad Fix',
     description: 'In some laptops, touchpad randomly disables itself when you boot. Created a system service to address that problem.',
     icon: '/assets/touchpad.png',
-    link: 'https://github.com/du0ks/fedora-touchpad-problem'
+    link: 'https://github.com/du0ks/fedora-touchpad-problem',
+    category: 'software-dev'
   },
   {
     title: 'Slow Wifi Fix',
     description: 'In Linux Mint, people might face very slow wifi because of power-save modes. Script for that problem.',
     icon: '/assets/wifi.png',
-    link: 'https://github.com/du0ks/slow-wifi-problem'
+    link: 'https://github.com/du0ks/slow-wifi-problem',
+    category: 'software-dev'
   },
   {
     title: 'Analysis of Wine Quality',
     description: 'Analyzed twelve physicochemical properties of wine to understand their impact on quality using Mann-Whitney U Test, Wilcoxon Rank-Sum Test, and linear regression.',
     icon: '/assets/wine.png',
-    link: null
+    link: null,
+    category: 'data-science'
   }
 ];
 ---
@@ -81,14 +91,22 @@ const projects = [
           Feel free to explore the range of my projects below. 💻
         </p>
       </div>
+
+      <!-- Filter Controls -->
+      <div class="filter-container fade-in">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="data-science">Data Science</button>
+        <button class="filter-btn" data-filter="software-dev">Software Dev</button>
+      </div>
+
     </div>
   </header>
 
   <main class="section" style="padding-top: 0;">
     <div class="container">
-      <div class="projects-grid">
+      <div class="projects-grid" id="projects-grid">
         {projects.map((project) => (
-          <div class="project-card glass-card">
+          <div class="project-card glass-card" data-category={project.category}>
             <img src={project.icon} alt={project.title}>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
@@ -104,4 +122,68 @@ const projects = [
   </main>
 
   <Footer />
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+            card.style.display = 'block';
+            // Add a small animation effect when showing
+            card.style.animation = 'none';
+            card.offsetHeight; /* trigger reflow */
+            card.style.animation = 'fadeInUp 0.5s ease forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-text-muted);
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-text);
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      background: var(--gradient-primary);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    }
+  </style>
 </Layout>
