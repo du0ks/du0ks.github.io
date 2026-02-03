@@ -76,40 +76,55 @@ const projects = [
   },
   {
     title: 'Leo Note Taking App',
-    description: 'A modern, high-performance, and decentralized note-taking application built for creative thinkers, combining block-based editing with the speed of native desktop applications.',
+    description: 'Native-speed note-taking meets decentralized storage. Built for those who need a fluid, block-based editor without the bloat of traditional cloud-locked applications.',
     icon: '/assets/leo.png',
     link: 'https://github.com/du0ks/Leo',
     category: 'software-dev'
   },
   {
     title: 'Council Agent',
-    description: 'A sophisticated multi-agent decision-support system powered by Google Gemini that provides strategic, multifaceted perspectives on critical goals through a structured deliberation process.',
+    description: 'Why settle for one AI perspective? This system orchestrates multiple Gemini-powered agents to debate and refine strategic decisions, providing a 360-degree view of your most critical goals.',
     icon: '/assets/council.png',
     link: 'https://github.com/du0ks/council-agent',
     category: 'software-dev'
   },
   {
     title: 'FitTrack PWA',
-    description: 'A modern, mobile-first Progressive Web App (PWA) designed for personal fitness and nutrition tracking, featuring a sleek dark-themed interface and workout management.',
+    description: 'A dedicated weightlifting and nutrition companion that lives on your home screen. No subscription fluff—just a fast, dark-themed tracker for your calories, protein, and personal records.',
     icon: '/assets/fitness.png',
     link: 'https://github.com/du0ks/fitness',
     category: 'software-dev'
   },
   {
     title: 'Sales Dashboard',
-    description: 'A modern web-based Sales & After-Sales Admin Dashboard for managing sales, orders, deliveries, payments, service requests, and product inventory.',
+    description: 'A streamlined admin hub for real-time inventory and order management. Built with vanilla JS to keep it lightweight, reliable, and efficient for end-to-end sales tracking.',
     icon: '/assets/sales.png',
     link: 'https://github.com/du0ks/311',
     category: 'software-dev'
   },
   {
     title: 'Prosperity Financial Planner',
-    description: 'An intelligent personal financial architect designed for clarity and privacy, mapping your entire financial life into a single, cohesive dashboard with precision wealth tracking.',
+    description: 'Take back control of your financial data. This platform maps out your entire wealth ecosystem in a single dashboard, focusing on privacy and long-term architectural planning.',
     icon: '/assets/prosperity.png',
     link: 'https://github.com/du0ks/financial_planner',
     category: 'software-dev'
   }
-];
+const sortedProjects = [...projects].sort((a, b) => a.title.localeCompare(b.title));
+
+const getSoftOrder = (title) => {
+  const orderMap = {
+    'Leo Note Taking App': 1,
+    'Prosperity Financial Planner': 2,
+    'FitTrack PWA': 3,
+    'Council Agent': 4,
+    'Android Bloatware Remover': 10,
+    'Fedora Minimal Installation Automation': 11,
+    'Slow Wifi Fix': 12,
+    'Touchpad Fix': 13,
+    'Sales Dashboard': 99
+  };
+  return orderMap[title] || 50;
+};
 ---
 
 <Layout title="Projects | Duhan Onat Karadayı" description="Explore projects by Duhan Onat Karadayı - Data Science, Statistical Analysis, and Linux Tools.">
@@ -140,8 +155,12 @@ const projects = [
   <main class="section" style="padding-top: 0;">
     <div class="container">
       <div class="projects-grid" id="projects-grid">
-        {projects.map((project) => (
-          <div class="project-card glass-card" data-category={project.category}>
+        {sortedProjects.map((project) => (
+          <div 
+            class="project-card glass-card" 
+            data-category={project.category}
+            style={`--soft-order: ${getSoftOrder(project.title)}`}
+          >
             <img src={project.icon} alt={project.title}>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
@@ -161,6 +180,7 @@ const projects = [
   <script>
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
+    const projectsGrid = document.getElementById('projects-grid');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -169,17 +189,25 @@ const projects = [
         // Add active class to clicked button
         btn.classList.add('active');
 
-        const filterValue = btn.getAttribute('data-filter');
+        const filterValue = btn.getAttribute('data-filter') || 'all';
+
+        // Toggle custom order class for software dev
+        if (filterValue === 'software-dev') {
+          projectsGrid?.classList.add('custom-order');
+        } else {
+          projectsGrid?.classList.remove('custom-order');
+        }
 
         projectCards.forEach(card => {
-          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-            card.style.display = 'block';
+          const htmlCard = card as HTMLElement;
+          if (filterValue === 'all' || htmlCard.getAttribute('data-category') === filterValue) {
+            htmlCard.style.display = 'block';
             // Add a small animation effect when showing
-            card.style.animation = 'none';
-            card.offsetHeight; /* trigger reflow */
-            card.style.animation = 'fadeInUp 0.5s ease forwards';
+            htmlCard.style.animation = 'none';
+            htmlCard.offsetHeight; /* trigger reflow */
+            htmlCard.style.animation = 'fadeInUp 0.5s ease forwards';
           } else {
-            card.style.display = 'none';
+            htmlCard.style.display = 'none';
           }
         });
       });
@@ -219,6 +247,11 @@ const projects = [
       color: white;
       border-color: transparent;
       box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    }
+
+    /* Custom Software Dev Ordering */
+    .projects-grid.custom-order .project-card {
+      order: var(--soft-order);
     }
   </style>
 </Layout>
