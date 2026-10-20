@@ -1,33 +1,96 @@
 ---
-// Skills component
-const skills = [
-  { name: 'R', level: 'Experienced', icon: '/assets/letter-r.png' },
-  { name: 'R Shiny', level: 'Intermediate', icon: '/assets/shiny.png' },
-  { name: 'Python', level: 'Experienced', icon: '/assets/python.png' },
-  { name: 'Statistical Analysis', level: 'Experienced', icon: '/assets/statistics.png' },
-  { name: 'GNU/Linux', level: 'Experienced', icon: '/assets/linux.png' },
-  { name: 'Bash', level: 'Experienced', icon: '/assets/bash.png' },
-  { name: 'Git', level: 'Intermediate', icon: '/assets/git.png' },
-  { name: 'Markup Languages', level: 'Experienced', icon: '/assets/markup.png' },
-  { name: 'Java', level: 'Experienced', icon: '/assets/java.png' },
-  { name: 'JavaScript', level: 'Intermediate', icon: '/assets/javascript.png' },
+const groups = [
+  {
+    name: 'AI & Agentic Engineering',
+    items: [
+      'Claude Code',
+      'Anthropic API',
+      'OpenAI Codex',
+      'MCP (Model Context Protocol)',
+      'n8n',
+      'Microsoft Copilot Studio',
+      'LLM Evaluation & Prompt Design',
+    ],
+  },
+  {
+    name: 'Programming',
+    items: ['Python', 'R', 'SQL', 'Bash', 'PHP', 'JavaScript / TypeScript', 'Java'],
+  },
+  {
+    name: 'Statistics & ML',
+    items: [
+      'Regression & Classification',
+      'PCA & Multivariate Statistics',
+      'Clustering',
+      'Time Series',
+      'ANOVA / MANOVA',
+      'Random Forest, XGBoost',
+      'Survival Analysis',
+    ],
+  },
+  {
+    name: 'Data Tools',
+    items: ['pandas / NumPy', 'tidyverse', 'scikit-learn', 'Excel (Advanced)', 'Minitab'],
+  },
+  {
+    name: 'Linux & Cloud',
+    items: ['Linux (15 years)', 'Ubuntu Server Admin', 'Azure VM', 'Nginx, Caddy, PHP-FPM', 'Docker', 'Git / GitHub'],
+  },
+  {
+    name: 'Web & Platforms',
+    items: ['WordPress, TutorLMS', 'React', 'Node.js, Vite', 'Firebase', 'REST APIs', 'Google Workspace Admin'],
+  },
+  {
+    name: 'Business',
+    items: ['Requirements Analysis', 'Technical Project Management', 'Market Research', 'Client Communication'],
+  },
 ];
 ---
 
-<section id="skills" class="section">
+<section id="stack" class="section">
   <div class="container">
-    <div class="section-header">
-      <p class="section-subtitle">My</p>
-      <h2 class="gradient-text">Skills</h2>
+    <div class="section-head">
+      <p class="label">Technical Stack</p>
+      <h2>Tools I use to go from data to shipped product.</h2>
     </div>
-    <div class="skills-grid stagger">
-      {skills.map((skill) => (
-        <div class="skill-card glass-card">
-          <img src={skill.icon} alt={skill.name}>
-          <h3>{skill.name}</h3>
-          <span>{skill.level}</span>
+
+    <div class="stack-grid">
+      {groups.map((g) => (
+        <div class="stack-group">
+          <h3 class="stack-group-title">{g.name}</h3>
+          <ul class="stack-items">
+            {g.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .stack-group-title {
+    font-size: 0.88rem;
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stack-items li {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .stack-items li:last-child {
+    border-bottom: none;
+  }
+</style>

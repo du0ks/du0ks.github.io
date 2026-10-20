@@ -1,0 +1,87 @@
+---
+const education = [
+  {
+    school: 'Czech Technical University in Prague (ČVUT)',
+    unit: 'MIAS Prague',
+    degree: 'M.Sc., Innovation Project Management',
+    period: '2026 – 2028 (Expected)',
+    detail:
+      'Coursework: project management, innovation management, financial and strategic management, process and project standards, Six Sigma, sustainability, statistical analysis.',
+  },
+  {
+    school: 'Middle East Technical University (METU)',
+    unit: 'Ankara, Türkiye',
+    degree: 'B.Sc., Statistics',
+    period: 'Graduated Jul 2026',
+    detail:
+      'Teaching Assistant, Data Analysis for Archaeometry (graduate course): taught R programming and statistical techniques. Founding and board member, METU AI Community; board member, METU Lodos Community.',
+  },
+];
+---
+
+<section id="education" class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="label">Education</p>
+      <h2>Academic background.</h2>
+    </div>
+
+    <ul class="edu-list">
+      {education.map((e) => (
+        <li class="edu-item card">
+          <span class="label-muted">{e.period}</span>
+          <h3>{e.school}</h3>
+          <p class="mono edu-degree">{e.degree}</p>
+          <p class="edu-unit label-muted">{e.unit}</p>
+          <p class="edu-detail">{e.detail}</p>
+        </li>
+      ))}
+    </ul>
+
+    <p class="edu-languages label-muted">Turkish (Native) · English (C1, IELTS 7.5) · Czech (Beginner)</p>
+  </div>
+</section>
+
+<style>
+  .edu-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .edu-item {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .edu-item h3 {
+    margin: var(--space-md) 0 var(--space-sm);
+  }
+
+  .edu-degree {
+    font-size: 0.8rem;
+    color: var(--color-accent-strong);
+  }
+
+  .edu-unit {
+    margin-top: 0.3rem;
+  }
+
+  .edu-detail {
+    margin-top: var(--space-md);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .edu-languages {
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 640px) {
+    .edu-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,245 @@
+---
+const projects = [
+  {
+    index: '01',
+    category: 'Professional · Data Science',
+    title: 'The Globby',
+    description:
+      'Built the market-matching engine behind an AI-driven export platform: ranking and scoring algorithms in Python and R that identify country-level trading opportunities for a given product from trade data, backed by regression, PCA, random forest, and XGBoost. Shipped full-stack features for the mobile app and integrated models into backend services on Linux.',
+    tech: ['Python', 'R', 'PCA', 'Random Forest', 'XGBoost', 'SQL', 'Linux'],
+    links: [{ label: 'theglobby.com', href: 'https://theglobby.com', external: true }],
+    image: null,
+    size: 'feature',
+  },
+  {
+    index: '02',
+    category: 'Professional · Software',
+    title: 'SATSO GreenSHIFT LMS',
+    description:
+      'Designed, built, and launched a WordPress/TutorLMS learning-management platform for SATSO end to end as sole developer, including Ubuntu server setup, Nginx and PHP-FPM configuration, security review, and deployment automation.',
+    tech: ['WordPress', 'TutorLMS', 'Nginx', 'PHP-FPM', 'Ubuntu', 'SSH'],
+    links: [{ label: 'View Platform', href: 'https://greenshift-test.satso.org.tr', external: true }],
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '03',
+    category: 'AI & Agentic Engineering',
+    title: 'brian',
+    description:
+      'Self-hosted AI planning assistant that turns free-form notes into structured tasks, events, and reminders via the Anthropic API. Built with Claude Code on a Hono/TypeScript backend with Drizzle ORM and SQLite; runs on a self-managed Azure VM behind Caddy with passkey auth and CalDAV sync. Picked the underlying model (Claude Haiku vs. Sonnet) with an evaluation pipeline over hand-labeled real notes, not a guess.',
+    tech: ['TypeScript', 'Anthropic API', 'Hono', 'Drizzle ORM', 'SQLite', 'Passkeys (WebAuthn)'],
+    links: [],
+    note: 'Private repository · Self-hosted',
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '04',
+    category: 'Software',
+    title: 'Leo',
+    description:
+      'Cross-platform, block-based note-taking app with real-time sync, native desktop performance via Tauri, block editing via BlockNote, and Firebase-backed authentication and storage.',
+    tech: ['React', 'TypeScript', 'Tauri', 'Firebase', 'Tailwind CSS'],
+    links: [
+      { label: 'Live App', href: 'https://leo-notes.web.app', external: true },
+      { label: 'GitHub', href: 'https://github.com/du0ks/Leo', external: true },
+    ],
+    image: '/assets/work/leo-dark.png',
+    size: 'split',
+  },
+  {
+    index: '05',
+    category: 'Software',
+    title: 'Prosperity',
+    description:
+      'A personal finance dashboard I use and actively extend, tracking cash, card debt, and gold holdings against a live gold price, with historical net-worth snapshots. Supabase for auth and data, optional bank-account linking via Plaid.',
+    tech: ['React', 'Supabase', 'Tailwind CSS', 'PWA'],
+    links: [
+      { label: 'Live App', href: 'https://du0ks.github.io/financial_planner', external: true },
+      { label: 'GitHub', href: 'https://github.com/du0ks/financial_planner', external: true },
+    ],
+    image: '/assets/work/prosperity-money.png',
+    size: 'split',
+  },
+];
+
+const featured = projects.filter((p) => p.size === 'feature');
+const split = projects.filter((p) => p.size === 'split');
+---
+
+<section id="work" class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="label">Selected Work</p>
+      <h2>Professional work and the projects that show how I build.</h2>
+    </div>
+
+    <div class="work-list">
+      {featured.map((p) => (
+        <article class="card work-card work-feature">
+          <div class="work-meta">
+            <span class="index-number">{p.index}</span>
+            <span class="label-muted">{p.category}</span>
+          </div>
+          <div class="work-body">
+            <h3>{p.title}</h3>
+            <p>{p.description}</p>
+            <ul class="tech-list">
+              {p.tech.map((t) => <li class="chip">{t}</li>)}
+            </ul>
+            <div class="work-links">
+              {p.links.map((l) => (
+                <a href={l.href} class="text-link" target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener noreferrer' : undefined}>
+                  {l.label} ↗
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+
+      <div class="work-split-grid">
+        {split.map((p) => (
+          <article class={`card work-card ${p.image ? 'has-image' : ''}`}>
+            {p.image && (
+              <div class="work-image">
+                <img src={p.image} alt={`${p.title} screenshot`} loading="lazy" width="640" height="400" />
+              </div>
+            )}
+            <div class="work-meta">
+              <span class="index-number">{p.index}</span>
+              <span class="label-muted">{p.category}</span>
+            </div>
+            <div class="work-body">
+              <h3>{p.title}</h3>
+              <p>{p.description}</p>
+              <ul class="tech-list">
+                {p.tech.map((t) => <li class="chip">{t}</li>)}
+              </ul>
+              {p.links.length > 0 ? (
+                <div class="work-links">
+                  {p.links.map((l) => (
+                    <a href={l.href} class="text-link" target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener noreferrer' : undefined}>
+                      {l.label} ↗
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                p.note && <p class="work-note label-muted">{p.note}</p>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="work-footer">
+      <a href="/projects" class="btn">All Projects ↗</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .work-card {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-feature {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: var(--space-xl);
+  }
+
+  .work-meta {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-md);
+  }
+
+  .work-feature .work-meta {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .work-body h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .work-body p {
+    max-width: 60ch;
+    font-size: 0.95rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .work-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+  }
+
+  .work-note {
+    font-size: 0.75rem;
+  }
+
+  .work-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .work-split-grid .work-card {
+    gap: var(--space-md);
+  }
+
+  .work-image {
+    margin: calc(var(--space-xl) * -1) calc(var(--space-xl) * -1) var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+  }
+
+  .work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .work-footer {
+    margin-top: var(--space-2xl);
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 860px) {
+    .work-feature {
+      grid-template-columns: 1fr;
+    }
+
+    .work-feature .work-meta {
+      flex-direction: row;
+      align-items: baseline;
+    }
+
+    .work-split-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

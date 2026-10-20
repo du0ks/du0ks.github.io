@@ -1,0 +1,159 @@
+---
+const roles = [
+  {
+    org: 'İnovakademi',
+    orgNote: 'foreign-trade training and consultancy',
+    title: 'Technical Solutions Lead',
+    meta: 'May 2026 – Present',
+    location: 'Remote · Prague',
+    bullets: [
+      "Own the company's technical projects end to end: requirements, solution design, implementation, deployment, and production support.",
+      'Designed, built, and launched the SATSO learning-management platform (WordPress, TutorLMS) end to end as sole developer, including server setup, security review, and deployment automation.',
+      'Project manager for the AI module of Cordelia, a clinic patient-data platform; advocated an API-based LLM architecture over training a proprietary model.',
+      'Work daily with AI coding agents (Claude Code, OpenAI Codex) connected to tools and data through MCP servers as the core engineering workflow.',
+      "Technical point of contact for clients, and administer the company's Workspace, DNS, email, and hosting.",
+    ],
+  },
+  {
+    org: 'The Globby',
+    orgNote: 'İnovakademi subsidiary',
+    title: 'Full-Stack Developer & Data Scientist',
+    meta: 'May 2025 – Apr 2026',
+    location: 'Remote',
+    bullets: [
+      'Developed an algorithm that identifies country-level trading opportunities for each product from trade data, using ranking and scoring approaches in Python and R.',
+      'Applied regression, classification, PCA, random forest, and gradient boosting (XGBoost) to trade and economic data for market and opportunity analysis.',
+      'Built data pipelines and analytics dashboards, and integrated models into backend services on Linux servers.',
+      'Full-stack development of features (JavaScript front end, Python/SQL back end) for a mobile application serving international trade.',
+    ],
+  },
+  {
+    org: 'Human Resources Office, Presidency of the Republic of Türkiye',
+    orgNote: null,
+    title: 'Data Science Intern',
+    meta: 'Oct 2024 – Jan 2025',
+    location: 'Ankara, Türkiye',
+    bullets: [
+      'Analyzed multiple HR datasets with regression, MANOVA, and clustering; delivered models, visualizations, and written interpretation in R, Python, SQL, and Excel.',
+      'Wrote reusable Excel and R scripts that were adopted by other departments for routine analyses.',
+    ],
+  },
+  {
+    org: 'TÜBİTAK',
+    orgNote: 'Scientific and Technological Research Council of Türkiye',
+    title: 'Strategic Planning and Management Intern',
+    meta: 'Jun 2023',
+    location: 'Ankara, Türkiye',
+    bullets: [
+      'Performed statistical analyses of TÜBİTAK project data using regression and non-parametric tests.',
+      'Designed and developed a work-planning application in Java using object-oriented programming.',
+    ],
+  },
+];
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="label">Experience</p>
+      <h2>Professional roles.</h2>
+    </div>
+
+    <ul class="role-list">
+      {roles.map((r) => (
+        <li class="role-item">
+          <div class="role-top">
+            <div>
+              <h3>{r.org}</h3>
+              {r.orgNote && <p class="role-org-note label-muted">{r.orgNote}</p>}
+            </div>
+            <div class="role-top-right">
+              <span class="label-muted">{r.meta}</span>
+              {r.location && <span class="role-location label-muted">{r.location}</span>}
+            </div>
+          </div>
+          <p class="role-title mono">{r.title}</p>
+          <ul class="role-bullets">
+            {r.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .role-list {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .role-item {
+    padding: var(--space-xl) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .role-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .role-org-note {
+    margin-top: 0.2rem;
+  }
+
+  .role-top-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+    text-align: right;
+  }
+
+  .role-title {
+    margin-top: var(--space-sm);
+    font-size: 0.8rem;
+    color: var(--color-accent-strong);
+    letter-spacing: 0.02em;
+  }
+
+  .role-bullets {
+    margin-top: var(--space-md);
+    max-width: 68ch;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .role-bullets li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+  }
+
+  .role-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 5px;
+    height: 1px;
+    background: var(--color-text-dim);
+  }
+
+  @media (max-width: 640px) {
+    .role-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .role-top-right {
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+</style>
