@@ -1,0 +1,172 @@
+---
+import VariantLayout from '../layouts/VariantLayout.astro';
+import VariantNav from '../components/VariantNav.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import SelectedWork from '../components/SelectedWork.astro';
+import Skills from '../components/Skills.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const resumeHref = '/assets/cv-technical-software.pdf';
+
+const lede = `Technical Solutions Lead owning web, server, and AI projects end to end: a
+  production learning-management platform on Ubuntu, Nginx, and PHP-FPM, a self-hosted
+  Claude-powered app on Azure, and Google Workspace and domain administration. Advanced
+  <strong>Linux</strong> user with 15 years of daily use, working with AI coding agents as the
+  core engineering workflow. Statistics graduate from <strong>METU</strong> with an ML
+  background, now an M.Sc. student at <strong>ČVUT</strong> Prague.`;
+
+const roles = [
+  {
+    org: 'İnovakademi',
+    orgNote: 'foreign-trade training and consultancy',
+    title: 'Technical Solutions Lead',
+    meta: 'May 2026 – Present',
+    location: 'Remote · Prague',
+    bullets: [
+      "Own the company's technical projects end to end: requirements, solution design, implementation, deployment, and production support.",
+      'Designed, built, and launched the SATSO learning-management platform (WordPress, TutorLMS) end to end as sole developer: Ubuntu, Nginx, PHP-FPM, security review, SSH, deployment automation, and production support.',
+      "Executed the company's Yandex 360 to Google Workspace migration and administer Workspace, DNS, email, and hosting.",
+      'Work daily with AI coding agents (Claude Code, OpenAI Codex) connected to tools and data through MCP servers as the core engineering workflow.',
+    ],
+  },
+  {
+    org: 'The Globby',
+    orgNote: 'İnovakademi subsidiary',
+    title: 'Full-Stack Developer & Data Scientist',
+    meta: 'May 2025 – Apr 2026',
+    location: 'Remote',
+    bullets: [
+      'Built data pipelines and analytics dashboards; integrated models into backend services on Linux servers with SQL and Python.',
+      'Automated recurring data collection, processing, and reporting workflows with Python and SQL.',
+    ],
+  },
+  {
+    org: 'Human Resources Office, Presidency of the Republic of Türkiye',
+    orgNote: null,
+    title: 'Data Science Intern',
+    meta: 'Oct 2024 – Jan 2025',
+    location: 'Ankara, Türkiye',
+    bullets: [
+      'Analyzed multiple HR datasets with regression, MANOVA, and clustering; delivered models, visualizations, and written interpretation.',
+      'Worked with Microsoft Copilot Studio on AI assistant use cases within the office\'s Microsoft environment.',
+    ],
+  },
+  {
+    org: 'TÜBİTAK',
+    orgNote: 'Scientific and Technological Research Council of Türkiye',
+    title: 'Strategic Planning and Management Intern',
+    meta: 'Jun 2023',
+    location: 'Ankara, Türkiye',
+    bullets: ['Designed and developed a work-planning application in Java using object-oriented programming.'],
+  },
+];
+
+const groups = [
+  {
+    name: 'Linux & Cloud',
+    items: ['Linux (15 years)', 'Ubuntu Server Admin', 'Azure VM', 'Nginx, Caddy, PHP-FPM', 'SSH, Docker', 'Deployment Automation', 'Security & Code Audits'],
+  },
+  {
+    name: 'Programming',
+    items: ['Python', 'R', 'Bash', 'SQL', 'PHP', 'JavaScript / TypeScript', 'Java'],
+  },
+  {
+    name: 'Web & Platforms',
+    items: ['WordPress, TutorLMS', 'React', 'Node.js, Vite', 'Firebase', 'REST APIs, CalDAV', 'Git / GitHub', 'Google Workspace, DNS/Email'],
+  },
+  {
+    name: 'AI-Assisted Engineering',
+    items: ['Claude Code', 'Anthropic API', 'OpenAI Codex', 'OpenRouter', 'ChatGPT', 'MCP, n8n', 'Microsoft Copilot Studio'],
+  },
+  {
+    name: 'Data',
+    items: ['Statistical Modeling', 'Machine Learning', 'Data Pipelines', 'Dashboards'],
+  },
+];
+
+const projects = [
+  {
+    index: '01',
+    category: 'Professional · Software',
+    title: 'SATSO GreenSHIFT LMS',
+    description:
+      'Designed, built, and launched a WordPress/TutorLMS learning-management platform for SATSO end to end as sole developer, including Ubuntu server setup, Nginx and PHP-FPM configuration, security review, and deployment automation.',
+    tech: ['WordPress', 'TutorLMS', 'Nginx', 'PHP-FPM', 'Ubuntu', 'SSH'],
+    links: [{ label: 'View Platform', href: 'https://greenshift-test.satso.org.tr', external: true }],
+    image: null,
+    size: 'feature',
+  },
+  {
+    index: '02',
+    category: 'AI & Agentic Engineering',
+    title: 'brian',
+    description:
+      'Self-hosted AI planning assistant built with Claude Code on a Hono/TypeScript backend with Drizzle ORM and SQLite; runs on a self-managed Azure VM behind Caddy with passkey auth and CalDAV sync.',
+    tech: ['TypeScript', 'Hono', 'Drizzle ORM', 'SQLite', 'Caddy', 'Passkeys (WebAuthn)'],
+    links: [],
+    note: 'Private repository · Self-hosted',
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '03',
+    category: 'Software',
+    title: 'Leo',
+    description:
+      'Cross-platform, block-based note-taking app with real-time sync, native desktop performance via Tauri, block editing via BlockNote, and Firebase-backed authentication and storage.',
+    tech: ['React', 'TypeScript', 'Tauri', 'Firebase', 'Tailwind CSS'],
+    links: [
+      { label: 'Live App', href: 'https://leo-notes.web.app', external: true },
+      { label: 'GitHub', href: 'https://github.com/du0ks/Leo', external: true },
+    ],
+    image: '/assets/work/leo-dark.png',
+    size: 'split',
+  },
+  {
+    index: '04',
+    category: 'Software',
+    title: 'Prosperity',
+    description:
+      'A personal finance dashboard I use and actively extend, tracking cash, card debt, and gold holdings against a live gold price. Supabase for auth and data, optional bank-account linking via Plaid.',
+    tech: ['React', 'Supabase', 'Tailwind CSS', 'PWA'],
+    links: [
+      { label: 'Live App', href: 'https://du0ks.github.io/financial_planner', external: true },
+      { label: 'GitHub', href: 'https://github.com/du0ks/financial_planner', external: true },
+    ],
+    image: '/assets/work/prosperity-money.png',
+    size: 'split',
+  },
+  {
+    index: '05',
+    category: 'Software',
+    title: 'maverick',
+    description:
+      'Local speech-to-text tool built on OpenAI Whisper (faster-whisper), running fully on-device through a FastAPI backend.',
+    tech: ['Python', 'FastAPI', 'faster-whisper'],
+    links: [],
+    note: 'Private repository',
+    image: null,
+    size: 'split',
+  },
+];
+---
+
+<VariantLayout title="Duhan Onat Karadayı · Software & Infrastructure Engineer" description="Software and infrastructure engineering work by Duhan Onat Karadayı — full-stack development, Linux systems, and production deployment.">
+  <VariantNav resumeHref={resumeHref} />
+  <Hero
+    label="Technical Solutions Lead · Software & Infrastructure Engineer, Prague CZ"
+    lede={lede}
+    resumeHref={resumeHref}
+  />
+  <main>
+    <Experience roles={roles} />
+    <SelectedWork projects={projects} projectsLink={null} />
+    <Skills groups={groups} />
+    <Education />
+    <Contact />
+  </main>
+  <Footer />
+</VariantLayout>

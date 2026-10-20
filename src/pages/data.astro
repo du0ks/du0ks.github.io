@@ -1,0 +1,164 @@
+---
+import VariantLayout from '../layouts/VariantLayout.astro';
+import VariantNav from '../components/VariantNav.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import SelectedWork from '../components/SelectedWork.astro';
+import Skills from '../components/Skills.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const resumeHref = '/assets/cv-data-statistics.pdf';
+
+const lede = `<strong>BSc Statistics</strong> graduate from <strong>METU</strong> who takes models
+  from analysis to production: built a trade-opportunity scoring algorithm on trade data,
+  applied regression, classification, PCA, boosting, and time-series methods, and delivered
+  analyses for two public institutions. Strong in Python, R, and SQL, deploying on Linux and
+  evaluating LLMs with labeled test sets. M.Sc. student at <strong>ČVUT</strong> Prague.`;
+
+const roles = [
+  {
+    org: 'İnovakademi',
+    orgNote: 'foreign-trade training and consultancy',
+    title: 'Technical Solutions Lead',
+    meta: 'May 2026 – Present',
+    location: 'Remote · Prague',
+    bullets: [
+      'Prepare market and commercial analyses, UR-GE export-cluster studies, and Ministry of Trade-facing reports and presentations for client companies.',
+      'Work daily with AI coding agents (Claude Code, OpenAI Codex) connected to tools and data through MCP servers as the core engineering workflow.',
+    ],
+  },
+  {
+    org: 'The Globby',
+    orgNote: 'İnovakademi subsidiary',
+    title: 'Full-Stack Developer & Data Scientist',
+    meta: 'May 2025 – Apr 2026',
+    location: 'Remote',
+    bullets: [
+      'Developed an algorithm that identifies country-level trading opportunities for each product from trade data, using ranking and scoring approaches in Python and R.',
+      'Applied regression, classification, PCA, random forest, and gradient boosting (XGBoost) to trade and economic data for market and opportunity analysis.',
+      'Built data pipelines and analytics dashboards; integrated models into backend services on Linux servers with SQL and Python.',
+      'Automated recurring data collection, processing, and reporting workflows with Python and SQL.',
+    ],
+  },
+  {
+    org: 'Human Resources Office, Presidency of the Republic of Türkiye',
+    orgNote: null,
+    title: 'Data Science Intern',
+    meta: 'Oct 2024 – Jan 2025',
+    location: 'Ankara, Türkiye',
+    bullets: [
+      'Analyzed multiple HR datasets with regression, MANOVA, and clustering; delivered models, visualizations, and written interpretation in R, Python, SQL, and Excel.',
+      'Wrote reusable Excel and R scripts that were adopted by other departments for routine analyses.',
+    ],
+  },
+  {
+    org: 'TÜBİTAK',
+    orgNote: 'Scientific and Technological Research Council of Türkiye',
+    title: 'Strategic Planning and Management Intern',
+    meta: 'Jun 2023',
+    location: 'Ankara, Türkiye',
+    bullets: ['Performed statistical analyses of TÜBİTAK project data using regression and non-parametric tests.'],
+  },
+];
+
+const groups = [
+  {
+    name: 'Programming',
+    items: ['Python (pandas, NumPy, scikit-learn)', 'R (tidyverse)', 'SQL', 'Bash'],
+  },
+  {
+    name: 'Statistics',
+    items: ['Regression, Logistic Regression', 'Hypothesis Testing', 'ANOVA / MANOVA', 'Multivariate Statistics, PCA', 'Clustering, Time Series', 'Sampling, Survival Analysis', 'Design of Experiments'],
+  },
+  {
+    name: 'Machine Learning',
+    items: ['Classification', 'Random Forest, XGBoost', 'Ranking & Scoring Models', 'Model Evaluation'],
+  },
+  {
+    name: 'Data Tools',
+    items: ['Data Pipelines', 'Dashboards', 'Excel (Advanced)', 'Minitab', 'Linux, Git, Docker'],
+  },
+  {
+    name: 'AI',
+    items: ['Claude Code', 'Anthropic API', 'OpenAI Codex', 'OpenRouter', 'MCP, n8n', 'LLM Evaluation'],
+  },
+];
+
+const projects = [
+  {
+    index: '01',
+    category: 'Professional · Data Science',
+    title: 'The Globby',
+    description:
+      'Built the market-matching engine behind an AI-driven export platform: ranking and scoring algorithms in Python and R that identify country-level trading opportunities for a given product from trade data, backed by regression, PCA, random forest, and XGBoost.',
+    tech: ['Python', 'R', 'PCA', 'Random Forest', 'XGBoost', 'SQL', 'Linux'],
+    links: [{ label: 'theglobby.com', href: 'https://theglobby.com', external: true }],
+    image: null,
+    size: 'feature',
+  },
+  {
+    index: '02',
+    category: 'Data Science',
+    title: 'Telco Customer Churn Analysis',
+    description:
+      'Statistical and ML churn analysis on telecom customer data: PCA, MANOVA, clustering, canonical correlation analysis, and classification models to uncover churn drivers and predict at-risk customers.',
+    tech: ['Python', 'R', 'PCA', 'MANOVA', 'Clustering', 'Classification'],
+    links: [{ label: 'GitHub', href: 'https://github.com/du0ks/customer-churn-analysis', external: true }],
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '03',
+    category: 'Data Science',
+    title: 'Housing Price Drivers',
+    description:
+      'Scraped real estate listings from sahibinden.com and modeled price drivers, size, room count, and building age, with multiple linear and logistic regression.',
+    tech: ['R', 'Web Scraping', 'Regression'],
+    links: [{ label: 'GitHub', href: 'https://github.com/du0ks/real-estate', external: true }],
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '04',
+    category: 'AI & Agentic Engineering',
+    title: 'brian',
+    description:
+      'Self-hosted AI planning assistant via the Anthropic API. Picked the underlying model (Claude Haiku vs. Sonnet) with an evaluation pipeline over hand-labeled real notes, not a guess, the same rigor applied to the trade-opportunity models above.',
+    tech: ['Anthropic API', 'Model Evaluation', 'TypeScript'],
+    links: [],
+    note: 'Private repository · Self-hosted',
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '05',
+    category: 'Professional · Software',
+    title: 'SATSO GreenSHIFT LMS',
+    description:
+      'Designed, built, and launched a WordPress/TutorLMS learning-management platform for SATSO end to end as sole developer.',
+    tech: ['WordPress', 'TutorLMS', 'Ubuntu'],
+    links: [{ label: 'View Platform', href: 'https://greenshift-test.satso.org.tr', external: true }],
+    image: null,
+    size: 'split',
+  },
+];
+---
+
+<VariantLayout title="Duhan Onat Karadayı · Data Scientist, Statistician" description="Data science and statistical work by Duhan Onat Karadayı — regression, machine learning, and production analytics.">
+  <VariantNav resumeHref={resumeHref} />
+  <Hero
+    label="Data Scientist · Statistician · Data Analyst, Prague CZ"
+    lede={lede}
+    resumeHref={resumeHref}
+  />
+  <main>
+    <Experience roles={roles} />
+    <SelectedWork projects={projects} projectsLink={null} />
+    <Skills groups={groups} />
+    <Education />
+    <Contact />
+  </main>
+  <Footer />
+</VariantLayout>

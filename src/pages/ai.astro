@@ -1,0 +1,163 @@
+---
+import VariantLayout from '../layouts/VariantLayout.astro';
+import VariantNav from '../components/VariantNav.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import SelectedWork from '../components/SelectedWork.astro';
+import Skills from '../components/Skills.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const resumeHref = '/assets/cv-ai-automation.pdf';
+
+const lede = `Two years of building with AI daily, not just prompting. <strong>Claude Code</strong>
+  and Codex are my core engineering workflow, with <strong>MCP</strong> servers and n8n for
+  automation, and <strong>Anthropic</strong> and OpenRouter APIs in production. I built and run
+  a self-hosted Claude-powered app whose model I selected with my own labeled evaluation set.
+  Technical Solutions Lead with a statistics degree from <strong>METU</strong>, now an M.Sc.
+  student at <strong>ČVUT</strong> Prague.`;
+
+const roles = [
+  {
+    org: 'İnovakademi',
+    orgNote: 'foreign-trade training and consultancy',
+    title: 'Technical Solutions Lead',
+    meta: 'May 2026 – Present',
+    location: 'Remote · Prague',
+    bullets: [
+      'Work daily with AI coding agents (Claude Code, OpenAI Codex), connected to tools and data through MCP servers, as the core engineering workflow for implementation, testing, automation, and infrastructure.',
+      'Designed, built, and launched the SATSO learning-management platform (WordPress, TutorLMS) end to end as sole developer.',
+      'Project manager for the AI module of Cordelia, a clinic patient-data platform; advocated an API-based LLM architecture over training a proprietary model.',
+      'Produced AI-avatar video courses (HeyGen) and bilingual study materials for corporate education programs.',
+      'Instructor of "Applied AI Solutions for SMEs," training SMEs and entrepreneurs on using AI in day-to-day business.',
+    ],
+  },
+  {
+    org: 'The Globby',
+    orgNote: 'İnovakademi subsidiary',
+    title: 'Full-Stack Developer & Data Scientist',
+    meta: 'May 2025 – Apr 2026',
+    location: 'Remote',
+    bullets: [
+      'Developed an algorithm that identifies country-level trading opportunities for each product from trade data, using ranking and scoring approaches in Python and R.',
+      'Automated recurring data collection, processing, and reporting workflows with Python and SQL.',
+    ],
+  },
+  {
+    org: 'Human Resources Office, Presidency of the Republic of Türkiye',
+    orgNote: null,
+    title: 'Data Science Intern',
+    meta: 'Oct 2024 – Jan 2025',
+    location: 'Ankara, Türkiye',
+    bullets: ['Worked with Microsoft Copilot Studio on AI assistant use cases within the office\'s Microsoft environment.'],
+  },
+  {
+    org: 'TÜBİTAK',
+    orgNote: 'Scientific and Technological Research Council of Türkiye',
+    title: 'Strategic Planning and Management Intern',
+    meta: 'Jun 2023',
+    location: 'Ankara, Türkiye',
+    bullets: ['Designed and developed a work-planning application in Java using object-oriented programming.'],
+  },
+];
+
+const groups = [
+  {
+    name: 'AI & Agentic Engineering',
+    items: ['Claude Code', 'Anthropic API', 'OpenAI Codex', 'OpenRouter', 'MCP (Model Context Protocol)', 'n8n', 'Microsoft Copilot Studio', 'ChatGPT, Google AI Studio', 'HeyGen'],
+  },
+  {
+    name: 'Programming & Automation',
+    items: ['Python', 'R', 'Bash', 'SQL', 'JavaScript / TypeScript', 'PHP', 'REST APIs', 'Workflow Automation'],
+  },
+  {
+    name: 'Infrastructure',
+    items: ['Linux (Advanced)', 'Ubuntu Server Admin', 'Azure VM', 'Nginx, Caddy', 'Docker, SSH', 'Firebase, CalDAV'],
+  },
+  {
+    name: 'Data & ML',
+    items: ['Statistical Modeling', 'Regression, Classification', 'Clustering, PCA', 'Time Series', 'Random Forest, XGBoost', 'OpenAI Whisper'],
+  },
+];
+
+const projects = [
+  {
+    index: '01',
+    category: 'AI & Agentic Engineering',
+    title: 'brian',
+    description:
+      'Self-hosted AI planning assistant that turns free-form notes into structured tasks, events, and reminders via the Anthropic API. Built with Claude Code on a Hono/TypeScript backend with Drizzle ORM and SQLite; runs on a self-managed Azure VM behind Caddy with passkey auth and CalDAV sync. Picked the underlying model (Claude Haiku vs. Sonnet) with an evaluation pipeline over hand-labeled real notes, not a guess.',
+    tech: ['TypeScript', 'Anthropic API', 'Hono', 'Drizzle ORM', 'SQLite', 'Passkeys (WebAuthn)'],
+    links: [],
+    note: 'Private repository · Self-hosted',
+    image: null,
+    size: 'feature',
+  },
+  {
+    index: '02',
+    category: 'Professional · Data Science',
+    title: 'The Globby',
+    description:
+      'Market-matching engine behind an AI-driven export platform: ranking and scoring algorithms in Python and R that identify country-level trading opportunities for a given product, backed by regression, PCA, random forest, and XGBoost.',
+    tech: ['Python', 'R', 'PCA', 'Random Forest', 'XGBoost', 'SQL'],
+    links: [{ label: 'theglobby.com', href: 'https://theglobby.com', external: true }],
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '03',
+    category: 'AI & Agentic Engineering',
+    title: 'maverick',
+    description:
+      'Local speech-to-text tool built on OpenAI Whisper (faster-whisper), running fully on-device through a FastAPI backend. No audio ever leaves the machine.',
+    tech: ['Python', 'FastAPI', 'faster-whisper', 'Pydantic'],
+    links: [],
+    note: 'Private repository',
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '04',
+    category: 'Professional · Software',
+    title: 'SATSO GreenSHIFT LMS',
+    description:
+      'Designed, built, and launched a WordPress/TutorLMS learning-management platform end to end as sole developer, including server setup, security review, and deployment automation.',
+    tech: ['WordPress', 'TutorLMS', 'Nginx', 'Ubuntu'],
+    links: [{ label: 'View Platform', href: 'https://greenshift-test.satso.org.tr', external: true }],
+    image: null,
+    size: 'split',
+  },
+  {
+    index: '05',
+    category: 'Software',
+    title: 'Leo',
+    description:
+      'Cross-platform, block-based note-taking app with real-time sync, native desktop performance via Tauri, and Firebase-backed authentication and storage.',
+    tech: ['React', 'TypeScript', 'Tauri', 'Firebase'],
+    links: [
+      { label: 'Live App', href: 'https://leo-notes.web.app', external: true },
+      { label: 'GitHub', href: 'https://github.com/du0ks/Leo', external: true },
+    ],
+    image: '/assets/work/leo-dark.png',
+    size: 'split',
+  },
+];
+---
+
+<VariantLayout title="Duhan Onat Karadayı · AI Automation & Agentic Engineering" description="AI automation and agentic engineering work by Duhan Onat Karadayı — Claude Code, MCP, LLM APIs, and production AI systems.">
+  <VariantNav resumeHref={resumeHref} />
+  <Hero
+    label="AI Automation & Agentic Engineering · Technical Solutions Lead, Prague CZ"
+    lede={lede}
+    resumeHref={resumeHref}
+  />
+  <main>
+    <Experience roles={roles} />
+    <SelectedWork projects={projects} projectsLink={null} />
+    <Skills groups={groups} />
+    <Education />
+    <Contact />
+  </main>
+  <Footer />
+</VariantLayout>

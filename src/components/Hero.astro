@@ -1,27 +1,38 @@
 ---
+interface Props {
+  label?: string;
+  lede?: string;
+  resumeHref?: string;
+  id?: string;
+}
+
+const {
+  label = 'Technical Solutions Lead · Statistician, Prague CZ',
+  lede = `Statistician who ships production systems. <strong>Statistics</strong>
+    graduate from <strong>METU</strong>, now pursuing an M.Sc. in
+    <strong>Innovation Project Management</strong> at <strong>ČVUT</strong>
+    Prague, and Technical Solutions Lead at İnovakademi, owning web,
+    server, data, and AI projects end to end. Two years of daily work with
+    AI coding agents (Claude Code, Codex) and LLM APIs, including a
+    self-hosted Claude-powered assistant I built and evaluated myself.
+    Founding member of the <strong>METU AI Community</strong>, with a
+    15-year background in <strong>Linux</strong>.`,
+  resumeHref = '/assets/duhan-onat-karadayi-cv.pdf',
+  id = 'about',
+} = Astro.props;
 ---
 
-<section id="about" class="hero">
+<section id={id} class="hero">
   <div class="container">
-    <p class="label reveal">Technical Solutions Lead · Statistician, Prague CZ</p>
+    <p class="label reveal">{label}</p>
 
     <h1 class="reveal" style="animation-delay: 0.05s">Duhan Onat Karadayı</h1>
 
-    <p class="hero-lede reveal" style="animation-delay: 0.1s">
-      Statistician who ships production systems. <strong>Statistics</strong>
-      graduate from <strong>METU</strong>, now pursuing an M.Sc. in
-      <strong>Innovation Project Management</strong> at <strong>ČVUT</strong>
-      Prague, and Technical Solutions Lead at İnovakademi, owning web,
-      server, data, and AI projects end to end. Two years of daily work with
-      AI coding agents (Claude Code, Codex) and LLM APIs, including a
-      self-hosted Claude-powered assistant I built and evaluated myself.
-      Founding member of the <strong>METU AI Community</strong>, with a
-      15-year background in <strong>Linux</strong>.
-    </p>
+    <p class="hero-lede reveal" style="animation-delay: 0.1s" set:html={lede} />
 
     <div class="hero-actions reveal" style="animation-delay: 0.15s">
       <a href="#work" class="btn btn-solid">View Work</a>
-      <a href="/assets/duhan-onat-karadayi-cv.pdf" class="btn" download>Download CV</a>
+      <a href={resumeHref} class="btn" download>Download CV</a>
       <a href="https://github.com/du0ks" class="text-link">GitHub ↗</a>
       <a href="https://linkedin.com/in/iamonat" class="text-link">LinkedIn ↗</a>
     </div>

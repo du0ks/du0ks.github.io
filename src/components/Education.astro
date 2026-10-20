@@ -1,5 +1,18 @@
 ---
-const education = [
+interface Edu {
+  school: string;
+  unit: string;
+  degree: string;
+  period: string;
+  detail: string;
+}
+
+interface Props {
+  education?: Edu[];
+  languages?: string;
+}
+
+const DEFAULT_EDUCATION: Edu[] = [
   {
     school: 'Czech Technical University in Prague (ČVUT)',
     unit: 'MIAS Prague',
@@ -17,6 +30,11 @@ const education = [
       'Teaching Assistant, Data Analysis for Archaeometry (graduate course): taught R programming and statistical techniques. Founding and board member, METU AI Community; board member, METU Lodos Community.',
   },
 ];
+
+const {
+  education = DEFAULT_EDUCATION,
+  languages = 'Turkish (Native) · English (C1, IELTS 7.5) · Czech (Beginner)',
+} = Astro.props;
 ---
 
 <section id="education" class="section">
@@ -38,7 +56,7 @@ const education = [
       ))}
     </ul>
 
-    <p class="edu-languages label-muted">Turkish (Native) · English (C1, IELTS 7.5) · Czech (Beginner)</p>
+    <p class="edu-languages label-muted">{languages}</p>
   </div>
 </section>
 

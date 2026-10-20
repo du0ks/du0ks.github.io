@@ -1,5 +1,14 @@
 ---
-const groups = [
+interface Group {
+  name: string;
+  items: string[];
+}
+
+interface Props {
+  groups?: Group[];
+}
+
+const DEFAULT_GROUPS: Group[] = [
   {
     name: 'AI & Agentic Engineering',
     items: [
@@ -45,6 +54,8 @@ const groups = [
     items: ['Requirements Analysis', 'Technical Project Management', 'Market Research', 'Client Communication'],
   },
 ];
+
+const { groups = DEFAULT_GROUPS } = Astro.props;
 ---
 
 <section id="stack" class="section">

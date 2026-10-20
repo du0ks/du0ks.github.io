@@ -1,5 +1,28 @@
 ---
-const projects = [
+interface Link {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+interface Project {
+  index: string;
+  category: string;
+  title: string;
+  description: string;
+  tech: string[];
+  links: Link[];
+  note?: string;
+  image?: string | null;
+  size: 'feature' | 'split';
+}
+
+interface Props {
+  projects?: Project[];
+  projectsLink?: string | null;
+}
+
+const DEFAULT_PROJECTS: Project[] = [
   {
     index: '01',
     category: 'Professional · Data Science',
@@ -63,6 +86,8 @@ const projects = [
     size: 'split',
   },
 ];
+
+const { projects = DEFAULT_PROJECTS, projectsLink = '/projects' } = Astro.props;
 
 const featured = projects.filter((p) => p.size === 'feature');
 const split = projects.filter((p) => p.size === 'split');
@@ -134,9 +159,11 @@ const split = projects.filter((p) => p.size === 'split');
       </div>
     </div>
 
-    <div class="work-footer">
-      <a href="/projects" class="btn">All Projects ↗</a>
-    </div>
+    {projectsLink && (
+      <div class="work-footer">
+        <a href={projectsLink} class="btn">All Projects ↗</a>
+      </div>
+    )}
   </div>
 </section>
 

@@ -1,5 +1,18 @@
 ---
-const roles = [
+interface Role {
+  org: string;
+  orgNote?: string | null;
+  title: string;
+  meta: string;
+  location?: string | null;
+  bullets: string[];
+}
+
+interface Props {
+  roles?: Role[];
+}
+
+const DEFAULT_ROLES: Role[] = [
   {
     org: 'İnovakademi',
     orgNote: 'foreign-trade training and consultancy',
@@ -50,6 +63,8 @@ const roles = [
     ],
   },
 ];
+
+const { roles = DEFAULT_ROLES } = Astro.props;
 ---
 
 <section id="experience" class="section">
