@@ -11,11 +11,11 @@ import Footer from '../components/Footer.astro';
 
 const resumeHref = '/assets/cv-data-statistics.pdf';
 
-const lede = `<strong>BSc Statistics</strong> graduate from <strong>METU</strong> who takes models
-  from analysis to production: built a trade-opportunity scoring algorithm on trade data,
-  applied regression, classification, PCA, boosting, and time-series methods, and delivered
-  analyses for two public institutions. Strong in Python, R, and SQL, deploying on Linux and
-  evaluating LLMs with labeled test sets. M.Sc. student at <strong>ČVUT</strong> Prague.`;
+const lede = `<strong>Statistics</strong> graduate from <strong>METU</strong> who works with
+  real trade and economic data every day: building data pipelines on the UN Comtrade API,
+  running scoring models that rank export markets, and turning the results into reports.
+  Previous data science work for the Presidency of Türkiye's HR Office and TÜBİTAK. Strong in
+  Python, R, and SQL. M.Sc. student at <strong>ČVUT</strong> Prague.`;
 
 const roles = [
   {
@@ -25,8 +25,10 @@ const roles = [
     meta: 'May 2026 – Present',
     location: 'Remote · Prague',
     bullets: [
-      'Prepare market and commercial analyses, UR-GE export-cluster studies, and Ministry of Trade-facing reports and presentations for client companies.',
-      'Work daily with AI coding agents (Claude Code, OpenAI Codex) connected to tools and data through MCP servers as the core engineering workflow.',
+      'Built a Python pipeline on the UN Comtrade API that extracts 2021–2025 trade data for 80 HS product codes across 8 medical-device sub-sectors, and produces ranked tables.',
+      "Implemented the market-scoring model behind a target-market analysis for a medical-sector export cluster in the Ministry of Trade's UR-GE programme: countries ranked on trade deficit, import demand, and Turkish export performance, with deep dives on 17 target countries.",
+      'Prepare sector and macroeconomic analyses from official statistics, and Ministry-facing reports for clients.',
+      'Automate data extraction, cleaning, and reporting with Python and AI coding agents (Claude Code, MCP).',
     ],
   },
   {
@@ -37,9 +39,8 @@ const roles = [
     location: 'Remote',
     bullets: [
       'Developed an algorithm that identifies country-level trading opportunities for each product from trade data, using ranking and scoring approaches in Python and R.',
-      'Applied regression, classification, PCA, random forest, and gradient boosting (XGBoost) to trade and economic data for market and opportunity analysis.',
-      'Built data pipelines and analytics dashboards; integrated models into backend services on Linux servers with SQL and Python.',
-      'Automated recurring data collection, processing, and reporting workflows with Python and SQL.',
+      'Applied regression, classification, PCA, random forest, gradient boosting, and time-series methods to trade and economic data for market and opportunity analysis.',
+      'Built data pipelines and analytics dashboards, and automated recurring data collection and reporting; integrated models into backend services on Linux with SQL and Python.',
     ],
   },
   {
@@ -66,23 +67,19 @@ const roles = [
 const groups = [
   {
     name: 'Programming',
-    items: ['Python (pandas, NumPy, scikit-learn)', 'R (tidyverse)', 'SQL', 'Bash'],
+    items: ['Python (pandas, NumPy, scikit-learn)', 'R (tidyverse)', 'SQL', 'Bash', 'REST APIs'],
   },
   {
-    name: 'Statistics',
-    items: ['Regression, Logistic Regression', 'Hypothesis Testing', 'ANOVA / MANOVA', 'Multivariate Statistics, PCA', 'Clustering, Time Series', 'Sampling, Survival Analysis', 'Design of Experiments'],
-  },
-  {
-    name: 'Machine Learning',
-    items: ['Classification', 'Random Forest, XGBoost', 'Ranking & Scoring Models', 'Model Evaluation'],
+    name: 'Statistics & ML',
+    items: ['Regression, Logistic Regression', 'Hypothesis Testing', 'ANOVA / MANOVA', 'PCA, Clustering', 'Time Series', 'Survival Analysis', 'Design of Experiments', 'Random Forest, XGBoost', 'Ranking & Scoring Models'],
   },
   {
     name: 'Data Tools',
-    items: ['Data Pipelines', 'Dashboards', 'Excel (Advanced)', 'Minitab', 'Linux, Git, Docker'],
+    items: ['Data Pipelines', 'Dashboards', 'Excel (Advanced)', 'Minitab', 'Git, Docker', 'Linux'],
   },
   {
-    name: 'AI',
-    items: ['Claude Code', 'Anthropic API', 'OpenAI Codex', 'OpenRouter', 'MCP, n8n', 'LLM Evaluation'],
+    name: 'AI & Automation',
+    items: ['Claude Code', 'Anthropic API', 'MCP', 'n8n', 'Microsoft Copilot Studio', 'LLM Evaluation'],
   },
 ];
 
@@ -101,17 +98,6 @@ const projects = [
   {
     index: '02',
     category: 'Data Science',
-    title: 'Telco Customer Churn Analysis',
-    description:
-      'Statistical and ML churn analysis on telecom customer data: PCA, MANOVA, clustering, canonical correlation analysis, and classification models to uncover churn drivers and predict at-risk customers.',
-    tech: ['Python', 'R', 'PCA', 'MANOVA', 'Clustering', 'Classification'],
-    links: [{ label: 'GitHub', href: 'https://github.com/du0ks/customer-churn-analysis', external: true }],
-    image: null,
-    size: 'split',
-  },
-  {
-    index: '03',
-    category: 'Data Science',
     title: 'Housing Price Drivers',
     description:
       'Scraped real estate listings from sahibinden.com and modeled price drivers, size, room count, and building age, with multiple linear and logistic regression.',
@@ -121,11 +107,11 @@ const projects = [
     size: 'split',
   },
   {
-    index: '04',
+    index: '03',
     category: 'AI & Agentic Engineering',
     title: 'brian',
     description:
-      'Self-hosted AI planning assistant via the Anthropic API. Picked the underlying model (Claude Haiku vs. Sonnet) with an evaluation pipeline over hand-labeled real notes, not a guess, the same rigor applied to the trade-opportunity models above.',
+      'Self-hosted AI assistant that turns notes into tasks via the Claude API. Chose the model by building a hand-labeled test set from real notes and comparing model accuracy on it, the same evaluation rigor applied to the trade-opportunity models above.',
     tech: ['Anthropic API', 'Model Evaluation', 'TypeScript'],
     links: [],
     note: 'Private repository · Self-hosted',
@@ -133,7 +119,7 @@ const projects = [
     size: 'split',
   },
   {
-    index: '05',
+    index: '04',
     category: 'Professional · Software',
     title: 'SATSO GreenSHIFT LMS',
     description:
@@ -146,10 +132,10 @@ const projects = [
 ];
 ---
 
-<VariantLayout title="Duhan Onat Karadayı · Data Scientist, Statistician" description="Data science and statistical work by Duhan Onat Karadayı — regression, machine learning, and production analytics.">
+<VariantLayout title="Duhan Onat Karadayı · Data Analyst, Statistician" description="Data analysis and statistical work by Duhan Onat Karadayı — trade data pipelines, regression, and production analytics.">
   <VariantNav resumeHref={resumeHref} />
   <Hero
-    label="Data Scientist · Statistician · Data Analyst, Prague CZ"
+    label="Data Analyst · Statistician, Prague CZ"
     lede={lede}
     resumeHref={resumeHref}
   />
